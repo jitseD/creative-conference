@@ -1,0 +1,42 @@
+---
+const { product, prev, next, path } = Astro.props;
+---
+
+<nav>
+    <ul>
+        {
+            prev && (
+                <li>
+                    <a href={`/${path}/${prev.id}`}>Previous</a>
+                </li>
+            )
+        }
+        {
+            next && (
+                <li class="right">
+                    <a href={`/${path}/${next.id}`}>Next</a>
+                </li>
+            )
+        }
+    </ul>
+</nav>
+
+<style>
+    nav {
+        background-color: white;
+        border-radius: var(--border-radius-xl);
+        margin-right: auto;
+        margin-left: auto;
+        padding: var(--s1) var(--s4);
+        max-width: var(--maxContent);
+    }
+
+    ul {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .right {
+        margin-left: auto;
+    }
+</style>

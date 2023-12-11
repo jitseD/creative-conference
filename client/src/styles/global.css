@@ -29,6 +29,7 @@
 html {
     box-sizing: border-box;
     overflow-x: hidden;
+    background-color: var(--c-white);
 }
 
 *,
@@ -92,4 +93,10 @@ section{
 
 p{
     max-inline-size: 30rem;
+}
+
+.button{
+    padding: var(--s-xs) var(--s-m);
+    border: var(--c-black) solid 0.1rem;
+    inline-size: max-content;
 }

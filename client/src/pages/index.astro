@@ -1,6 +1,14 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { Image } from "astro:assets";
+import SpeakerList from "../components/SpeakerList.astro";
+
+import fetchApi from "../lib/strapi";
+const speakers = await fetchApi({
+	endpoint: "speakers",
+	wrappedByKey: "data",
+	query: { populate: ["image", "talk"] },
+});
+
 const pageTitle = "Home";
 ---
 
@@ -125,6 +133,9 @@ const pageTitle = "Home";
 				>explore schedule</a
 			>
 		</section>
-		
+		<section class="speakers">
+			<h2 class="speaker__title">Meet the Speakers</h2>
+			<SpeakerList speakers={speakers} />
+		</section>
 	</main>
 </BaseLayout>

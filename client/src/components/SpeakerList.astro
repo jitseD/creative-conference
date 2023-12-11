@@ -1,0 +1,16 @@
+---
+import SpeakerCard from "./SpeakerCard.astro";
+const { speakers } = Astro.props;
+---
+
+<style>
+    .speaker__wrapper {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+        gap: var(--s-xl) var(--s-m);
+    }
+</style>
+
+<ul class="speaker__wrapper">
+    {speakers.map((speaker) => <SpeakerCard speaker={speaker} />)}
+</ul>
