@@ -6,16 +6,24 @@
     nav {
         height: 5vh;
         display: grid;
-        grid-template-columns: 1fr repeat(2, max-content);
+        grid-template-columns: 1fr repeat(6, max-content);
         align-items: center;
         gap: var(--s-m);
         padding-inline: var(--s-m);
         justify-content: flex-end;
+        background-color: var(--c-black);
+    }
+    a {
+        color: var(--c-white);
     }
 </style>
 
 <nav>
     <a href="/">Home</a>
-    <a href="/index.astro#about">About</a>
+    <a href="#about">About</a>
     <a href="/schedule">Schedule</a>
+    <a href="#speaskers">Speakers</a>
+    <a href="#venues">Venues</a>
+    <a href="#tickets">Tickets</a>
+    <a href="/contact">Contact</a>
 </nav>

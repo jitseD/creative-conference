@@ -1,6 +1,10 @@
 :root {
-    --c-white: white;
-    --c-black: black;
+    --c-white: #fffdf7;
+    --c-black: #03071e;
+    --c-blue-l: #AAD5F5;
+    --c-blue-d: #2C91C7;
+    --c-yellow-l: #FFE191;
+    --c-yellow-d: #FEBC00;
 
     --f--2xs: clamp(0.7813rem, 0.7747rem + 0.0326vw, 0.8rem);
     --f--xs: clamp(0.9375rem, 0.9158rem + 0.1087vw, 1rem);
@@ -24,6 +28,7 @@
 
 html {
     box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 *,
@@ -72,4 +77,19 @@ a {
 
 strong {
     font-weight: 900;
+}
+
+h2 {
+    font-size: var(--f-xl);
+    font-weight: 500;
+    line-height: 1.2;
+    padding-block-end: var(--s-m);
+}
+
+section{
+    padding-inline: var(--s-3xl);
+}
+
+p{
+    max-inline-size: 30rem;
 }
