@@ -1,0 +1,75 @@
+:root {
+    --c-white: white;
+    --c-black: black;
+
+    --f--2xs: clamp(0.7813rem, 0.7747rem + 0.0326vw, 0.8rem);
+    --f--xs: clamp(0.9375rem, 0.9158rem + 0.1087vw, 1rem);
+    --f-s: clamp(1.125rem, 1.0815rem + 0.2174vw, 1.25rem);
+    --f-m: clamp(1.35rem, 1.2761rem + 0.3696vw, 1.5625rem);
+    --f-l: clamp(1.62rem, 1.5041rem + 0.5793vw, 1.9531rem);
+    --f-xl: clamp(1.9438rem, 1.7707rem + 0.8652vw, 2.4413rem);
+    --f-2xl: clamp(2.3325rem, 2.0823rem + 1.2511vw, 3.0519rem);
+    --f-3xl: clamp(2.7994rem, 2.4461rem + 1.7663vw, 3.815rem);
+
+    --s-3xs: clamp(0.3125rem, 0.3125rem + 0vw, 0.3125rem);
+    --s-2xs: clamp(0.5625rem, 0.5408rem + 0.1087vw, 0.625rem);
+    --s-xs: clamp(0.875rem, 0.8533rem + 0.1087vw, 0.9375rem);
+    --s-s: clamp(1.125rem, 1.0815rem + 0.2174vw, 1.25rem);
+    --s-m: clamp(1.6875rem, 1.6223rem + 0.3261vw, 1.875rem);
+    --s-l: clamp(2.25rem, 2.163rem + 0.4348vw, 2.5rem);
+    --s-xl: clamp(3.375rem, 3.2446rem + 0.6522vw, 3.75rem);
+    --s-2xl: clamp(4.5rem, 4.3261rem + 0.8696vw, 5rem);
+    --s-3xl: clamp(6.75rem, 6.4891rem + 1.3043vw, 7.5rem);
+}
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Chakra Petch', sans-serif;
+}
+
+html {
+    font-family: sans-serif;
+}
+
+p {
+    line-height: 1.6;
+}
+
+a {
+    color: var(--c-black);
+    text-decoration: none;
+}
+
+strong {
+    font-weight: 900;
+}
