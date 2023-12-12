@@ -1,0 +1,57 @@
+{
+  "kind": "collectionType",
+  "collectionName": "talks",
+  "info": {
+    "singularName": "talk",
+    "pluralName": "talks",
+    "displayName": "Talk",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "speaker": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::speaker.speaker",
+      "mappedBy": "talk"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "inversedBy": "talks"
+    },
+    "day": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::day.day",
+      "inversedBy": "talks"
+    },
+    "start": {
+      "type": "time"
+    },
+    "end": {
+      "type": "time"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "room": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::room.room",
+      "inversedBy": "talk"
+    }
+  }
+}
