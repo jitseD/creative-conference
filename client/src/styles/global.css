@@ -30,12 +30,17 @@ html {
     box-sizing: border-box;
     overflow-x: hidden;
     background-color: var(--c-white);
+    scroll-behavior: smooth;
 }
 
 *,
 *::before,
 *::after {
     box-sizing: inherit;
+}
+
+body {
+    padding-block-start: 5vh;
 }
 
 img {
@@ -87,15 +92,20 @@ h2 {
     padding-block-end: var(--s-m);
 }
 
-section{
+h3 {
+    font-size: var(--f-l);
+    font-weight: 300;
+}
+
+section {
     padding-inline: var(--s-3xl);
 }
 
-p{
+p {
     max-inline-size: 30rem;
 }
 
-.button{
+.button {
     padding: var(--s-xs) var(--s-m);
     border: var(--c-black) solid 0.1rem;
     inline-size: max-content;
