@@ -1,0 +1,29 @@
+---
+const {ticket} = Astro.props;
+---
+
+<style>
+    .ticket__info {
+		padding: var(--s-m);
+		border: var(--c-black) solid 0.1rem;
+        display: grid;
+
+        grid-template-columns:repeat(2, 1fr);
+        grid-template-rows: min-content 1fr min-content;
+        gap: var(--s-s);
+	}
+
+    .ticket__price{
+        justify-self: flex-end;
+        font-size: var(--f-m);
+    }
+</style>
+
+<li class="ticket__info">
+    <h3 class="ticket__name">{ticket.attributes.name}</h3>
+    <p class="ticket__description">
+        {ticket.attributes.description}
+    </p>
+    <p class="ticket__price">€ {ticket.attributes.price}</p>
+    <a href="button">Buy Ticket</a>
+</li>
