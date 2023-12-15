@@ -1,0 +1,15 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+const allTutorials = await Astro.glob("../../pages/tutorials/*.md");
+const pageTitle = "Tutorials";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+    <ul>
+        {
+            allTutorials.map((tutorial) => (
+                <li>{tutorial.frontmatter.title}</li>
+            ))
+        }
+    </ul>
+</BaseLayout>
