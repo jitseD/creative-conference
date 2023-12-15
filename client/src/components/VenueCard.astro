@@ -1,0 +1,46 @@
+---
+import { Image } from "astro:assets";
+const { venue } = Astro.props;
+---
+
+<style>
+    .venue {
+        display: grid;
+        inline-size: max-content;
+        place-items: flex-end;
+        gap: var(--s-3xs);
+        inline-size: 100%;
+        /* padding: var(--s-m);
+        border: var(--c-black) solid 0.1rem; */
+    }
+    .venue__name {
+        padding-block-start: var(--s-s);
+        color: var(--c-blue-d);
+    }
+    .img__container {
+        grid-row: 1;
+        position: relative;
+        block-size: min-content;
+    }
+    .venue__img {
+        inline-size: inherit;
+    }
+    .img__overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        inline-size: 100%;
+        block-size: 100%;
+        background-color: rgba(44, 145, 199, 0);
+        transition: background-color 0.3s ease;
+    }
+    .venue:hover .img__overlay {
+        background-color: rgba(44, 145, 199, 0.4);
+    }
+</style>
+
+<li class="venue__container" transition:name={`venue-${venue.id}`}>
+    <a class="venue" href={`/venues/${venue.id}`}>
+        <h3 class="venue__name">{venue.attributes.name}</h3>
+    </a>
+</li>

@@ -1,0 +1,16 @@
+---
+import VenueCard from "./VenueCard.astro";
+const { venues } = Astro.props;
+---
+
+<style>
+    .speaker__wrapper {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+        gap: var(--s-xl) var(--s-m);
+    }
+</style>
+
+<ul class="speaker__wrapper">
+    {venues.map((venue) => <VenueCard venue={venue} />)}
+</ul>
