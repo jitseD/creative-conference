@@ -1,14 +1,68 @@
 ---
-const { talk } = Astro.props;
+const { talk, showCategory = true } = Astro.props;
 ---
 
 <style>
-    .talk__wrapper[data-category="break"] h2{
-        font-size: var(--f-m);
+    .talk__time {
+        font-size: var(--f-l);
+        justify-self: flex-end;
     }
+
+    .talk__wrapper {
+        width: 100%;
+        border: var(--c-black) 0.1rem solid;
+        display: grid;
+        grid-template-columns: min-content 1fr;
+        gap: var(--s-2xs) var(--s-xs);
+        padding: var(--s-m);
+    }
+
     .talk__location {
         display: flex;
         gap: var(--s-xs);
+    }
+
+    .talk__location,
+    .talk__speaker {
+        grid-column: 2;
+    }
+
+    .talk__time {
+        font-family: "Chakra Petch", sans-serif;
+        font-size: var(--f-l);
+        font-weight: 300;
+        align-items: flex-start;
+    }
+
+    .talk__name,
+    .talk__time {
+        color: var(--c-blue-d);
+    }
+
+    .talk__name {
+        padding: unset;
+        align-self: center;
+    }
+
+    .talk__wrapper[data-category="break"] .talk__time,
+    .talk__wrapper[data-category="break"] .talk__name {
+        color: var(--c-black);
+    }
+
+    .talk__wrapper[data-category="break"],
+    .talk__wrapper[data-category="talk"] {
+        width: max-content;
+        grid-column: 1/-1;
+    }
+
+    .talk__wrapper[data-category="break"] h3,
+    .talk__wrapper[data-category="break"] .talk__time {
+        font-size: var(--f-s);
+    }
+
+    .speaker__description,
+    .talk__description {
+        display: none;
     }
 </style>
 
@@ -16,12 +70,8 @@ const { talk } = Astro.props;
     class="talk__wrapper"
     data-category={talk.attributes.category?.data?.attributes.category}
 >
-    <h2 class="talk__name">{talk.attributes.title}</h2>
-    <p class="talk__start">{talk.attributes.start}</p>
-    <p class="talk__end">{talk.attributes.end}</p>
-    <p class="talk__category">
-        {talk.attributes.category?.data?.attributes.category}
-    </p>
+    <p class="talk__time">{talk.attributes.start}</p>
+    <h3 class="talk__name">{talk.attributes.title}</h3>
     {
         talk.attributes.room?.data && (
             <div class="talk__location">
@@ -41,26 +91,23 @@ const { talk } = Astro.props;
     {
         talk.attributes.speaker?.data && (
             <div class="talk__speaker">
-                <p>{talk.attributes.speaker?.data?.attributes.name}</p>
-                <p>{talk.attributes.speaker?.data?.attributes.description}</p>
+                <p class="speaker__name">
+                    {talk.attributes.speaker?.data?.attributes.name}
+                </p>
+                <p class="speaker__description">
+                    {talk.attributes.speaker?.data?.attributes.description}
+                </p>
             </div>
         )
     }
-    <p>{talk.attributes.description}</p>
+    <p class="talk__description">{talk.attributes.description}</p>
 </li>
 
 <script>
-    const $starts = document.querySelectorAll(`.talk__start`);
+    const $starts = document.querySelectorAll(`.talk__time`);
     $starts.forEach(($start) => {
         const start = $start.textContent;
         const [hours, minutes] = start.split(":").slice(0, 2);
         $start.textContent = `${hours}:${minutes}`;
-    });
-
-    const $ends = document.querySelectorAll(`.talk__end`);
-    $ends.forEach(($end) => {
-        const end = $end.textContent;
-        const [hours, minutes] = end.split(":").slice(0, 2);
-        $end.textContent = `${hours}:${minutes}`;
     });
 </script>

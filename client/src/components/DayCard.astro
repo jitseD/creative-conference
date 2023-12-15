@@ -4,11 +4,18 @@ import TalkCard from "../components/TalkCard.astro";
 const { day, talks } = Astro.props;
 ---
 
-<style></style>
+<style>
+    .day__wrapper {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+        justify-items: center;
+        gap: var(--s-m);
+    }
+</style>
 
 <section>
-    <h2>{day}</h2>
-    <ul>
+    <h2 class="day__title">{day}</h2>
+    <ul class="day__wrapper">
         {talks.map((talk) => <TalkCard talk={talk} />)}
     </ul>
 </section>
