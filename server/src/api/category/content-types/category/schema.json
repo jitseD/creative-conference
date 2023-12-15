@@ -16,15 +16,16 @@
       "type": "string",
       "required": true
     },
-    "talks": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::talk.talk",
-      "mappedBy": "categories"
-    },
     "slug": {
       "type": "uid",
-      "targetField": "category"
+      "targetField": "category",
+      "required": true
+    },
+    "talks": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::talk.talk",
+      "mappedBy": "category"
     }
   }
 }

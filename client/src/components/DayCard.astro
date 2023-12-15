@@ -1,0 +1,16 @@
+---
+import TalkCard from "../components/TalkCard.astro";
+
+const { day, talks } = Astro.props;
+---
+
+<style>
+</style>
+
+
+<section>
+    <h2>{day}</h2>
+    <ul>
+        {talks.map((talk) => <TalkCard talk={talk} />)}
+    </ul>
+</section>

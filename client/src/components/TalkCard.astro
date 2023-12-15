@@ -1,3 +1,70 @@
 ---
-
+const { talk } = Astro.props;
 ---
+
+<style>
+    .talk__wrapper {
+        background-color: blue;
+    }
+    .talk__wrapper[data-category="break"] {
+        background-color: red;
+    }
+    .talk__location {
+        display: flex;
+        gap: var(--s-xs);
+    }
+</style>
+
+<li
+    class="talk__wrapper"
+    data-category={talk.attributes.category?.data?.attributes.category}
+>
+    <h2 class="talk__name">{talk.attributes.title}</h2>
+    <p class="talk__start">{talk.attributes.start}</p>
+    <p class="talk__end">{talk.attributes.end}</p>
+    <p class="talk__category">
+        {talk.attributes.category?.data?.attributes.category}
+    </p>
+    {
+        talk.attributes.room?.data && (
+            <div class="talk__location">
+                <p class="talk__room">
+                    {talk.attributes.room?.data?.attributes.name}
+                </p>
+                <p>-</p>
+                <p class="talk__venue">
+                    {
+                        talk.attributes.room?.data?.attributes.venue.data
+                            .attributes.name
+                    }
+                </p>
+            </div>
+        )
+    }
+    {
+        talk.attributes.speaker?.data && (
+            <div class="talk__speaker">
+                <p>{talk.attributes.speaker?.data?.attributes.name}</p>
+                //{" "}
+                <p>{talk.attributes.speaker?.data?.attributes.description}</p>
+            </div>
+        )
+    }
+    <p>{talk.attributes.description}</p>
+</li>
+
+<script>
+    const $starts = document.querySelectorAll(`.talk__start`);
+    $starts.forEach(($start) => {
+        const start = $start.textContent;
+        const [hours, minutes] = start.split(":").slice(0, 2);
+        $start.textContent = `${hours}:${minutes}`;
+    });
+
+    const $ends = document.querySelectorAll(`.talk__end`);
+    $ends.forEach(($end) => {
+        const end = $end.textContent;
+        const [hours, minutes] = end.split(":").slice(0, 2);
+        $end.textContent = `${hours}:${minutes}`;
+    });
+</script>

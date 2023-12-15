@@ -25,9 +25,9 @@
       "target": "api::speaker.speaker",
       "mappedBy": "talk"
     },
-    "categories": {
+    "category": {
       "type": "relation",
-      "relation": "manyToMany",
+      "relation": "manyToOne",
       "target": "api::category.category",
       "inversedBy": "talks"
     },
@@ -45,7 +45,8 @@
     },
     "slug": {
       "type": "uid",
-      "targetField": "title"
+      "targetField": "title",
+      "required": true
     },
     "room": {
       "type": "relation",

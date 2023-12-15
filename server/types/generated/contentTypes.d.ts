@@ -690,12 +690,13 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
   };
   attributes: {
     category: Attribute.String & Attribute.Required;
+    slug: Attribute.UID<'api::category.category', 'category'> &
+      Attribute.Required;
     talks: Attribute.Relation<
       'api::category.category',
-      'manyToMany',
+      'oneToMany',
       'api::talk.talk'
     >;
-    slug: Attribute.UID<'api::category.category', 'category'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -729,7 +730,7 @@ export interface ApiDayDay extends Schema.CollectionType {
     name: Attribute.String & Attribute.Required;
     date: Attribute.Date;
     talks: Attribute.Relation<'api::day.day', 'oneToMany', 'api::talk.talk'>;
-    slug: Attribute.UID<'api::day.day', 'name'>;
+    slug: Attribute.UID<'api::day.day', 'name'> & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -759,7 +760,7 @@ export interface ApiRoomRoom extends Schema.CollectionType {
       'api::venue.venue'
     >;
     talk: Attribute.Relation<'api::room.room', 'oneToOne', 'api::talk.talk'>;
-    slug: Attribute.UID<'api::room.room', 'name'>;
+    slug: Attribute.UID & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -791,7 +792,7 @@ export interface ApiSpeakerSpeaker extends Schema.CollectionType {
       'api::talk.talk'
     >;
     title: Attribute.String;
-    slug: Attribute.UID<'api::speaker.speaker', 'name'>;
+    slug: Attribute.UID<'api::speaker.speaker', 'name'> & Attribute.Required;
     image: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -830,15 +831,15 @@ export interface ApiTalkTalk extends Schema.CollectionType {
       'oneToOne',
       'api::speaker.speaker'
     >;
-    categories: Attribute.Relation<
+    category: Attribute.Relation<
       'api::talk.talk',
-      'manyToMany',
+      'manyToOne',
       'api::category.category'
     >;
     day: Attribute.Relation<'api::talk.talk', 'manyToOne', 'api::day.day'>;
     start: Attribute.Time;
     end: Attribute.Time;
-    slug: Attribute.UID<'api::talk.talk', 'title'>;
+    slug: Attribute.UID<'api::talk.talk', 'title'> & Attribute.Required;
     room: Attribute.Relation<'api::talk.talk', 'oneToOne', 'api::room.room'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -904,6 +905,7 @@ export interface ApiVenueVenue extends Schema.CollectionType {
       'api::room.room'
     >;
     image: Attribute.Media;
+    slug: Attribute.UID & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -31,6 +31,7 @@ html {
     overflow-x: hidden;
     background-color: var(--c-white);
     scroll-behavior: smooth;
+    color: var(--c-black);
 }
 
 *,
@@ -59,7 +60,7 @@ img {
     border: 0;
 }
 
-.hide{
+.hide {
     display: none;
 }
 
@@ -87,6 +88,14 @@ a {
 
 strong {
     font-weight: 900;
+}
+
+h1 {
+    font-size: var(--f-2xl);
+    font-weight: 500;
+    line-height: 1.2;
+    padding-block: var(--s-3xl) var(--s-l);
+    padding-inline-start: var(--s-3xl);
 }
 
 h2 {

@@ -3,7 +3,7 @@ const { type } = Astro.props;
 ---
 
 <style>
-    .header {
+    nav[data-type="header"] {
         position: fixed;
         top: 0;
         inline-size: 100%;
@@ -17,20 +17,20 @@ const { type } = Astro.props;
         z-index: 100;
         background-color: rgba(255, 253, 247, 0.5);
     }
-
-    .footer {
+    
+    nav[data-type="footer"] {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(5rem, min-content));
         place-items: center;
         gap: var(--s-s);
     }
 
-    .footer a{
+    nav[data-type="footer"] a {
         color: var(--c-white);
     }
 </style>
 
-<nav class={type == "header" ? "header" : "footer"}>
+<nav data-type={type}>
     <a href=`${import.meta.env.BASE_URL}/`>Home</a>
     <a href=`${import.meta.env.BASE_URL}/#about`>About</a>
     <a href=`${import.meta.env.BASE_URL}/schedule`>Schedule</a>
