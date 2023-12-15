@@ -3,11 +3,8 @@ const { talk } = Astro.props;
 ---
 
 <style>
-    .talk__wrapper {
-        background-color: blue;
-    }
-    .talk__wrapper[data-category="break"] {
-        background-color: red;
+    .talk__wrapper[data-category="break"] h2{
+        font-size: var(--f-m);
     }
     .talk__location {
         display: flex;
@@ -45,7 +42,6 @@ const { talk } = Astro.props;
         talk.attributes.speaker?.data && (
             <div class="talk__speaker">
                 <p>{talk.attributes.speaker?.data?.attributes.name}</p>
-                //{" "}
                 <p>{talk.attributes.speaker?.data?.attributes.description}</p>
             </div>
         )

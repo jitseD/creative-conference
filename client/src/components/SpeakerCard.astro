@@ -41,12 +41,12 @@ const imageUrl = `${import.meta.env.STRAPI_URL}${speaker.attributes.image.url}`;
 <li class="speaker__container">
     <!-- <a class="speaker__container" href=""> -->
 
-        <h3 class="speaker__name">
-            {
-                speaker.attributes.title ? (
-                    <span>{speaker.attributes.title} </span>
-                    ) : null
-                }
+    <h3 class="speaker__name">
+        {
+            speaker.attributes.title ? (
+                <span>{speaker.attributes.title} </span>
+            ) : null
+        }
         {speaker.attributes.name}
     </h3>
     <p class="speaker__job">{speaker.attributes.job}</p>
@@ -54,16 +54,18 @@ const imageUrl = `${import.meta.env.STRAPI_URL}${speaker.attributes.image.url}`;
         {
             speaker.attributes.image?.data?.attributes.url && (
                 <Image
-                alt="Speaker Image"
-                src={`${import.meta.env.STRAPI_URL}${
-                    speaker.attributes.image?.data?.attributes.url
-                }`}
-                width="400"
-                height="400"
+                    alt="Speaker Image"
+                    src={`${import.meta.env.STRAPI_URL}${
+                        speaker.attributes.image?.data?.attributes.url
+                    }`}
+                    width="400"
+                    height="400"
+                    widths={[250, 350, 500, 750]}
+                    sizes="(max-width: 400px) 250px, 500px"
                 />
-                )
-            }
+            )
+        }
         <div class="img__overlay"></div>
     </div>
-<!-- </a> -->
+    <!-- </a> -->
 </li>
