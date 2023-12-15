@@ -4,18 +4,15 @@ const { venue } = Astro.props;
 ---
 
 <style>
-    .venue {
-        display: grid;
-        inline-size: max-content;
-        place-items: flex-end;
-        gap: var(--s-3xs);
+    .venue__container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         inline-size: 100%;
-        /* padding: var(--s-m);
-        border: var(--c-black) solid 0.1rem; */
+        block-size: 100%;
     }
-    .venue__name {
-        padding-block-start: var(--s-s);
-        color: var(--c-blue-d);
+    .venue__description {
+        padding-block-start: var(--s-xs);
     }
     .img__container {
         grid-row: 1;
@@ -39,8 +36,17 @@ const { venue } = Astro.props;
     }
 </style>
 
-<li class="venue__container" transition:name={`venue-${venue.id}`}>
-    <a class="venue" href={`/venues/${venue.id}`}>
-        <h3 class="venue__name">{venue.attributes.name}</h3>
-    </a>
-</li>
+<div class="venue__container">
+    <Image
+        src={`${import.meta.env.STRAPI_URL}${
+            venue.attributes.image?.data?.attributes.url
+        }`}
+        alt="venue picture"
+        width="750"
+        height="500"
+        widths={[250, 350, 500, 750]}
+        sizes="(max-width: 35em) 70vw, (max-width: 50em) 60vw, 30vw"
+    />
+    <p class="venue__description">{venue.attributes.description}</p>
+    <a class="button" href="">view talks at this location</a>
+</div>

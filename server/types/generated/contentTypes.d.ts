@@ -898,12 +898,12 @@ export interface ApiVenueVenue extends Schema.CollectionType {
     name: Attribute.String & Attribute.Required;
     address: Attribute.Text;
     description: Attribute.Text;
-    slug: Attribute.UID<'api::venue.venue', 'name'>;
     rooms: Attribute.Relation<
       'api::venue.venue',
       'oneToMany',
       'api::room.room'
     >;
+    image: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

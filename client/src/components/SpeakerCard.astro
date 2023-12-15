@@ -5,7 +5,7 @@ const imageUrl = `${import.meta.env.STRAPI_URL}${speaker.attributes.image.url}`;
 ---
 
 <style>
-    .speaker {
+    .speaker__container {
         display: grid;
         inline-size: max-content;
         place-items: flex-end;
@@ -22,7 +22,7 @@ const imageUrl = `${import.meta.env.STRAPI_URL}${speaker.attributes.image.url}`;
         block-size: min-content;
     }
     .speaker__img {
-        inline-size: inherit;
+        inline-size: 100%;
     }
     .img__overlay {
         position: absolute;
@@ -33,46 +33,37 @@ const imageUrl = `${import.meta.env.STRAPI_URL}${speaker.attributes.image.url}`;
         background-color: rgba(44, 145, 199, 0);
         transition: background-color 0.3s ease;
     }
-    .speaker:hover .img__overlay {
+    .speaker__container:hover .img__overlay {
         background-color: rgba(44, 145, 199, 0.4);
     }
 </style>
 
-<li class="speaker__container" transition:name={`speaker-${speaker.id}`}>
-    <a class="speaker" href={`/speakers/${speaker.slug}`}>
+<li class="speaker__container">
+    <!-- <a class="speaker__container" href=""> -->
+
         <h3 class="speaker__name">
             {
                 speaker.attributes.title ? (
                     <span>{speaker.attributes.title} </span>
-                ) : null
-            }
-            {speaker.attributes.name}
-        </h3>
-        <p class="speaker__job">{speaker.attributes.job}</p>
-        <p class="speaker__talk">
-            {speaker.attributes.talk.data.attributes.title}
-        </p>
-        <div class="img__container">
-            <!-- <p>
-                {
-                    `${import.meta.env.STRAPI_URL}${
-                        speaker.attributes.image?.data?.attributes.url
-                    }`
+                    ) : null
                 }
-            </p> -->
-            {
-                speaker.attributes.image?.data?.attributes.url && (
-                    <Image
-                        alt="Speaker Image"
-                        src={`${import.meta.env.STRAPI_URL}${
-                            speaker.attributes.image?.data?.attributes.url
-                        }`}
-                        width="500"
-                        height="500"
-                    />
+        {speaker.attributes.name}
+    </h3>
+    <p class="speaker__job">{speaker.attributes.job}</p>
+    <div class="img__container">
+        {
+            speaker.attributes.image?.data?.attributes.url && (
+                <Image
+                alt="Speaker Image"
+                src={`${import.meta.env.STRAPI_URL}${
+                    speaker.attributes.image?.data?.attributes.url
+                }`}
+                width="400"
+                height="400"
+                />
                 )
             }
-            <div class="img__overlay"></div>
-        </div>
-    </a>
+        <div class="img__overlay"></div>
+    </div>
+<!-- </a> -->
 </li>

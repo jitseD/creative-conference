@@ -44,19 +44,23 @@ body {
 }
 
 img {
-    max-width: 100%;
-    height: auto;
+    max-inline-size: 100%;
+    block-size: auto;
 }
 
 .visually-hidden {
     position: absolute;
-    width: 1px;
-    height: 1px;
+    inline-size: 1px;
+    block-size: 1px;
     padding: 0;
     margin: -1px;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     border: 0;
+}
+
+.hide{
+    display: none;
 }
 
 h1,
@@ -98,7 +102,7 @@ h3 {
 }
 
 section {
-    padding-inline: var(--s-3xl);
+    padding: var(--s-xl) var(--s-3xl);
 }
 
 p {
@@ -107,6 +111,7 @@ p {
 
 .button {
     padding: var(--s-xs) var(--s-m);
+    margin-block: var(--s-m);
     border: var(--c-black) solid 0.1rem;
     inline-size: max-content;
 }

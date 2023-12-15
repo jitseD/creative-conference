@@ -22,15 +22,21 @@
     "description": {
       "type": "text"
     },
-    "slug": {
-      "type": "uid",
-      "targetField": "name"
-    },
     "rooms": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::room.room",
       "mappedBy": "venue"
+    },
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

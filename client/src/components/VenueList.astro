@@ -4,13 +4,73 @@ const { venues } = Astro.props;
 ---
 
 <style>
-    .speaker__wrapper {
+    .venues {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
-        gap: var(--s-xl) var(--s-m);
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        column-gap: var(--s-xl);
+    }
+
+    .venue {
+        grid-column: 1;
+        display: grid;
+        align-items: center;
+        font-size: var(--f-m);
+        text-align: center;
+    }
+
+    .venue--active {
+        font-weight: 900;
+        color: var(--c-blue-d);
+    }
+
+    .venue__card:not(.hide) {
+        grid-column: 2;
+        grid-row: 1/-1;
+        display: grid;
+        place-items: center;
     }
 </style>
 
-<ul class="speaker__wrapper">
-    {venues.map((venue) => <VenueCard venue={venue} />)}
+<ul class="venues">
+    {
+        venues.map((venue) => (
+            <>
+                <li class="venue">{venue.attributes.name}</li>
+                <li class="venue__card hide">
+                    <VenueCard venue={venue} />
+                </li>
+            </>
+        ))
+    }
 </ul>
+
+<script>
+    const cards = document.querySelectorAll(`.venue__card`);
+    const venues = document.querySelectorAll(`.venue`);
+
+    const clickVenueHandle = (e) => {
+        cards.forEach((card) => {
+            card.classList.add(`hide`);
+        });
+        venues.forEach((venues) => {
+            venues.classList.remove(`venue--active`);
+        });
+        const venue = e.currentTarget;
+        venue.nextElementSibling.classList.remove(`hide`);
+        venue.classList.add(`venue--active`);
+    };
+
+    const init = () => {
+        cards[0].classList.remove(`hide`);
+        // console.log(venues);
+        // venues[0].classList.add(`venue--active`);
+
+        const venues = document.querySelectorAll(`.venue`);
+        venues.forEach((venue) => {
+            venue.addEventListener(`click`, clickVenueHandle);
+        });
+    };
+
+    init();
+</script>
