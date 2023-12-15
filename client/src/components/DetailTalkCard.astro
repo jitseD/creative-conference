@@ -104,6 +104,15 @@ const { talk, showCategory = true } = Astro.props;
         )
     }
 </section>
+<section>
+    <a
+            href={`${import.meta.env.BASE_URL}/category/${
+                talk.attributes.category.data.attributes.slug
+            }`}
+        >
+            More {talk.attributes.category.data.attributes.slug}
+        </a>
+</section>
 
 <script>
     const $starts = document.querySelectorAll(`.talk__time`);
