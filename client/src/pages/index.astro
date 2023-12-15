@@ -30,7 +30,7 @@ const pageTitle = "Home";
 ---
 
 <style>
-	h1 {
+	.index__title {
 		display: none;
 	}
 	.header {
@@ -118,7 +118,7 @@ const pageTitle = "Home";
 </style>
 
 <BaseLayout pageTitle={pageTitle}>
-	<h1>Home</h1>
+	<h1 class="index__title">Home</h1>
 	<section class="header">
 		<Image class="boat" alt="boat" src={BoatImg} width="1920" />
 		<div class="header__container">
@@ -150,7 +150,7 @@ const pageTitle = "Home";
 				connect through the transformative power of folded wonders.
 			</p>
 			<a class="button button--about" href="schedule.astro"
-			>explore schedule</a
+				>explore schedule</a
 			>
 			<Image class="pattern" alt="pattern" src={PatternImg} width="400" />
 			<Image class="animals" alt="animals" src={AnimalImg} width="500" />

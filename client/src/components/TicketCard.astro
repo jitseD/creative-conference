@@ -13,9 +13,18 @@ const {ticket} = Astro.props;
         gap: var(--s-s);
 	}
 
+    .ticket__name, .ticket__description{
+        grid-column: 1/-1;
+    }
+
     .ticket__price{
-        justify-self: flex-end;
+        align-self:flex-end;
         font-size: var(--f-m);
+    }
+
+    .button--ticket{
+        align-self: flex-end;
+        margin: unset;
     }
 </style>
 
@@ -25,5 +34,5 @@ const {ticket} = Astro.props;
         {ticket.attributes.description}
     </p>
     <p class="ticket__price">€ {ticket.attributes.price}</p>
-    <a href="button">Buy Ticket</a>
+    <a class="button button--ticket" href="">Buy Ticket</a>
 </li>
