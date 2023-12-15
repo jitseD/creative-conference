@@ -1,0 +1,30 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import TalksList from "../../components/TalksList.astro";
+import fetchApi from "../../lib/strapi";
+
+export async function getStaticPaths() {
+    const categories = await fetchApi({
+        endpoint: "categories",
+        wrappedByKey: "data",
+        // query: { "populate[0]": "products", "populate[1]": "products.image" },
+        query: { populate: ["talks", "talks.category", "talks.day"] },
+    });
+
+    const paths = categories.map((category, i) => ({
+        params: { id: category.attributes.slug.toString() },
+        props: {
+            category,
+        },
+    }));
+
+    return paths;
+}
+
+const { category } = Astro.props;
+---
+
+<BaseLayout pageTitle={category.attributes.category}>
+    <h1>{category.attributes.category}s in Schedule</h1>
+    <TalksList talks={category.attributes.talks.data} />
+</BaseLayout>

@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import DayCard from "../components/DayCard.astro";
+import TalksList from "../components/TalksList.astro";
 
 import fetchApi from "../lib/strapi";
 const talks = await fetchApi({
@@ -9,38 +9,10 @@ const talks = await fetchApi({
     query: { populate: ["speaker", "room", "room.venue", "day", "category"] },
 });
 
-const groupedAndSortedData = talks.reduce((acc, event) => {
-    const dayName = event.attributes.day.data.attributes.name;
-
-    if (!acc[dayName]) {
-        acc[dayName] = [];
-    }
-
-    acc[dayName].push(event);
-    return acc;
-}, {});
-
-for (const dayName in groupedAndSortedData) {
-    groupedAndSortedData[dayName].sort((a, b) => {
-        const startA = a.attributes.start;
-        const startB = b.attributes.start;
-        return startA.localeCompare(startB);
-    });
-}
-
-const days = await fetchApi({
-    endpoint: "days",
-    wrappedByKey: "data",
-});
-
 const pageTitle = "Schedule";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
     <h1>Schedule</h1>
-    {
-        Object.entries(groupedAndSortedData).map(([day, talks]) => (
-            <DayCard day={day} talks={talks} />
-        ))
-    }
+    <TalksList talks={talks}/>
 </BaseLayout>

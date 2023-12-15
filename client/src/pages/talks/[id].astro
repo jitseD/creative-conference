@@ -9,20 +9,27 @@ export async function getStaticPaths() {
         endpoint: "talks",
         wrappedByKey: "data",
         query: {
-            populate: ["speaker", "speaker.image", "room", "room.venue", "day", "category"],
+            populate: [
+                "speaker",
+                "speaker.image",
+                "room",
+                "room.venue",
+                "day",
+                "category",
+            ],
         },
     });
 
-  const paths = talks.map((talk, i) => ({
-    params: { id: talk.attributes.slug.toString() },
-    props: {
-      talk,
-      next: i < talks.length - 1 ? talks[i + 1] : null,
-      prev: i > 0 ? talks[i - 1] : null,
-    },
-  }));
+    const paths = talks.map((talk, i) => ({
+        params: { id: talk.attributes.slug.toString() },
+        props: {
+            talk,
+            next: i < talks.length - 1 ? talks[i + 1] : null,
+            prev: i > 0 ? talks[i - 1] : null,
+        },
+    }));
 
-  return paths;
+    return paths;
 }
 
 const { talk, prev, next } = Astro.props;
@@ -30,6 +37,15 @@ const { talk, prev, next } = Astro.props;
 
 <BaseLayout pageTitle={talk.attributes.title}>
     <DetailTalkCard talk={talk} />
+    <section>
 
+        <div class="category">
+            <a class="button"
+            href={`${import.meta.env.BASE_URL}/category/${
+                talk.attributes.category.data.attributes.category
+            }`}>more {talk.attributes.category.data.attributes.category}s</a
+        >
+    </div>
+</section>
     <PrevNext prev={prev} next={next} path="talks" />
 </BaseLayout>
