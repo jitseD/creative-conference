@@ -1,8 +1,30 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+import fetchApi from "../lib/strapi";
+const talks = await fetchApi({
+    endpoint: "talks",
+    wrappedByKey: "data",
+    // query: { populate: ["speaker", "room", "room.venue"] },
+    query: { populate: "*" },
+});
+
 const pageTitle = "Schedule";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-
+    {
+        talks.map(
+            (talk) => (
+                <>
+                    <p> {talk.attributes.title} </p>
+                    <p> {talk.attributes.description} </p>
+                    </>
+                    <p> {talk.attributes?.speaker.data?.attributes?.name} </p>
+                    // <p> {talk.attributes.room?.data.attributes.name} </p>
+                    // <p> {talk.attributes.room?.data.attributes.venue?.data.attributes.name} </p>
+                    // <p> {talk.attributes.categories?.data.attributes.category} </p>
+            )
+        )
+    }
 </BaseLayout>
