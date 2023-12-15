@@ -9,7 +9,6 @@ const { talk, showCategory = true } = Astro.props;
     }
 
     .talk__wrapper {
-        width: 100%;
         border: var(--c-black) 0.1rem solid;
         display: grid;
         grid-template-columns: min-content 1fr;
@@ -23,7 +22,7 @@ const { talk, showCategory = true } = Astro.props;
     }
 
     .talk__location,
-    .talk__speaker {
+    .speaker__name {
         grid-column: 2;
     }
 
@@ -44,31 +43,30 @@ const { talk, showCategory = true } = Astro.props;
         align-self: center;
     }
 
-    .talk__wrapper[data-category="break"] .talk__time,
-    .talk__wrapper[data-category="break"] .talk__name {
+    .break .talk__time,
+    .break .talk__name,
+    .evening-social .talk__time,
+    .evening-social .talk__name {
         color: var(--c-black);
     }
 
-    .talk__wrapper[data-category="break"],
-    .talk__wrapper[data-category="talk"] {
-        width: max-content;
+    .break,
+    .talk,
+    .evening-social {
+        inline-size: 100%;
         grid-column: 1/-1;
     }
 
-    .talk__wrapper[data-category="break"] h3,
-    .talk__wrapper[data-category="break"] .talk__time {
+    .break h3,
+    .break .talk__time,
+    .evening-social h3,
+    .evening-social .talk__time {
         font-size: var(--f-s);
-    }
-
-    .speaker__description,
-    .talk__description {
-        display: none;
     }
 </style>
 
-<li
-    class="talk__wrapper"
-    data-category={talk.attributes.category?.data?.attributes.category}
+<article
+    class={`talk__wrapper ${talk.attributes.category?.data.attributes.slug}`}
 >
     <p class="talk__time">{talk.attributes.start}</p>
     <h3 class="talk__name">{talk.attributes.title}</h3>
@@ -90,18 +88,13 @@ const { talk, showCategory = true } = Astro.props;
     }
     {
         talk.attributes.speaker?.data && (
-            <div class="talk__speaker">
-                <p class="speaker__name">
-                    {talk.attributes.speaker?.data?.attributes.name}
-                </p>
-                <p class="speaker__description">
-                    {talk.attributes.speaker?.data?.attributes.description}
-                </p>
-            </div>
+            <p class="speaker__name">
+                by
+                {talk.attributes.speaker?.data?.attributes.name}
+            </p>
         )
     }
-    <p class="talk__description">{talk.attributes.description}</p>
-</li>
+</article>
 
 <script>
     const $starts = document.querySelectorAll(`.talk__time`);

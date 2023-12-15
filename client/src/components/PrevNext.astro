@@ -2,24 +2,24 @@
 const { product, prev, next, path } = Astro.props;
 ---
 
-<nav>
+<section>
     <ul>
         {
             prev && (
-                <li>
-                    <a href={`/${path}/${prev.id}`}>Previous</a>
+                <li class="button">
+                    <a href={`${import.meta.env.BASE_URL}/${path}/${prev.attributes.slug}`}>Previous</a>
                 </li>
             )
         }
         {
             next && (
-                <li class="right">
-                    <a href={`/${path}/${next.id}`}>Next</a>
+                <li class="right button">
+                    <a href={`${import.meta.env.BASE_URL}/${path}/${next.attributes.slug}`}>Next</a>
                 </li>
             )
         }
     </ul>
-</nav>
+</section>
 
 <style>
     nav {

@@ -1,0 +1,115 @@
+---
+import { Image, imageConfig } from "astro:assets";
+const { talk, showCategory = true } = Astro.props;
+---
+
+<style>
+    .talk__time {
+        font-size: var(--f-xl);
+        justify-self: flex-end;
+        font-weight: 500;
+        font-family: "Chakra Petch", sans-serif;
+        font-size: var(--f-l);
+    }
+
+    .talk__wrapper {
+        border: var(--c-black) 0.1rem solid;
+        display: grid;
+        grid-template-columns: min-content 1fr;
+        gap: var(--s-2xs) var(--s-xs);
+        margin: var(--s-xl) var(--s-3xl);
+    }
+
+    .talk__location {
+        display: flex;
+        gap: var(--s-xs);
+    }
+
+    .talk__location,
+    .talk__description,
+    .talk__speaker {
+        grid-column: 2;
+    }
+
+    .talk__speaker {
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        grid-template-rows: min-content 1fr;
+        gap: var(--s-m);
+        padding-block-start: var(--s-m);
+    }
+
+    .speaker__image {
+        grid-column: 1;
+        grid-row: 1/-1;
+    }
+
+    .talk__name,
+    .talk__time {
+        color: var(--c-blue-d);
+    }
+
+    .talk__name {
+        padding: unset;
+        align-self: center;
+    }
+</style>
+
+<section
+    class={`talk__wrapper ${talk.attributes.category?.data.attributes.slug}`}
+>
+    <p class="talk__time">{talk.attributes.start}</p>
+    <h2 class="talk__name">{talk.attributes.title}</h2>
+    {
+        talk.attributes.room?.data && (
+            <div class="talk__location">
+                <p class="talk__room">
+                    {talk.attributes.room?.data?.attributes.name}
+                </p>
+                <p>-</p>
+                <p class="talk__venue">
+                    {
+                        talk.attributes.room?.data?.attributes.venue.data
+                            .attributes.name
+                    }
+                </p>
+            </div>
+        )
+    }
+    <p class="talk__description">{talk.attributes.description}</p>
+    {
+        talk.attributes.speaker?.data && (
+            <div class="talk__speaker">
+                <h3 class="speaker__name">
+                    {talk.attributes.speaker?.data?.attributes.name}
+                </h3>
+                <>
+                    <p class="speaker__description">
+                        {talk.attributes.speaker?.data?.attributes.bio}
+                    </p>
+                    <Image
+                        class="speaker__image"
+                        alt="Speaker Image"
+                        src={`${import.meta.env.STRAPI_URL}${
+                            talk.attributes.speaker?.data?.attributes.image.data
+                                .attributes.url
+                        }`}
+                        width="400"
+                        height="400"
+                        widths={[250, 350, 500, 750]}
+                        sizes="(max-width: 400px) 250px, 500px"
+                    />
+                </>
+            </div>
+        )
+    }
+</section>
+
+<script>
+    const $starts = document.querySelectorAll(`.talk__time`);
+    $starts.forEach(($start) => {
+        const start = $start.textContent;
+        const [hours, minutes] = start.split(":").slice(0, 2);
+        $start.textContent = `${hours}:${minutes}`;
+    });
+</script>

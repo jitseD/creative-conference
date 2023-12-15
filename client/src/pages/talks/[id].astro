@@ -1,0 +1,35 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import DetailTalkCard from "../../components/DetailTalkCard.astro";
+import PrevNext from "../../components/PrevNext.astro";
+import fetchApi from "../../lib/strapi";
+
+export async function getStaticPaths() {
+    const talks = await fetchApi({
+        endpoint: "talks",
+        wrappedByKey: "data",
+        query: {
+            populate: ["speaker", "speaker.image", "room", "room.venue", "day", "category"],
+        },
+    });
+
+  const paths = talks.map((talk, i) => ({
+    params: { id: talk.attributes.slug.toString() },
+    props: {
+      talk,
+      next: i < talks.length - 1 ? talks[i + 1] : null,
+      prev: i > 0 ? talks[i - 1] : null,
+    },
+  }));
+
+  return paths;
+}
+
+const { talk, prev, next } = Astro.props;
+---
+
+<BaseLayout pageTitle={talk.attributes.title}>
+    <DetailTalkCard talk={talk} />
+
+    <PrevNext prev={prev} next={next} path="talks" />
+</BaseLayout>

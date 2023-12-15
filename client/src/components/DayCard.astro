@@ -11,11 +11,45 @@ const { day, talks } = Astro.props;
         justify-items: center;
         gap: var(--s-m);
     }
+    .talk__wrapper[data-category="break"],
+    .talk__wrapper[data-category="evening-social"] {
+        width: max-content;
+    }
+    .talk__wrapper[data-category="break"],
+    .talk__wrapper[data-category="talk"],
+    .talk__wrapper[data-category="evening-social"] {
+        width: max-content;
+        grid-column: 1/-1;
+    }
 </style>
 
 <section>
     <h2 class="day__title">{day}</h2>
     <ul class="day__wrapper">
-        {talks.map((talk) => <TalkCard talk={talk} />)}
+        <!-- {talks.map((talk) => <TalkCard talk={talk} />)} -->
+        {
+            talks.map((talk) => (
+                <li
+                    class="talk__wrapper"
+                    data-category={
+                        talk.attributes.category?.data.attributes.slug
+                    }
+                >
+                    {["talk", "workshop", "exhibition"].includes(
+                        talk.attributes.category?.data.attributes.slug,
+                    ) ? (
+                        <a
+                            href={`${import.meta.env.BASE_URL}/talks/${
+                                talk.attributes.slug
+                            }`}
+                        >
+                            <TalkCard talk={talk} />
+                        </a>
+                    ) : (
+                        <TalkCard talk={talk} />
+                    )}
+                </li>
+            ))
+        }
     </ul>
 </section>
