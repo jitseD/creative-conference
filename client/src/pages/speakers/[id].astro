@@ -12,7 +12,7 @@ export async function getStaticPaths() {
     });
 
     const paths = speakers.map((speaker, i) => ({
-        params: { id: speaker.id.toString() },
+        params: { id: speaker.slug.toString() },
         props: {
             speaker,
             next: i < speakers.length - 1 ? speakers[i + 1] : null,
@@ -25,7 +25,7 @@ export async function getStaticPaths() {
 const { speaker, prev, next } = Astro.props;
 ---
 
-<BaseLayout pageTitle={speaker.name}>
+<BaseLayout pageTitle={speaker.attributes.name}>
     <SpeakerCard speaker={speaker} />
     <PrevNext prev={prev} next={next} path="speakers" />
 </BaseLayout>
