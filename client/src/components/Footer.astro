@@ -1,6 +1,67 @@
 ---
-
+import Navigation from "./Navigation.astro";
 ---
 
+<style>
+    footer {
+        display: flex;
+        justify-content: space-between;
+        padding: var(--s-3xl);
+        background-color: var(--c-blue-d);
+        color: var(--c-white);
+    }
+    
+    div{
+        display: flex;
+        flex-direction: column;
+        gap: var(--s-s);
+        align-items: center;
+    }
+    
+    ul {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(5rem, 1fr));
+        gap: var(--s-2xs);
+    }
+    
+    li {
+        display: flex;
+        gap: var(--s-3xs);
+    }
+    
+    h2 {
+        font-size: var(--f-m);
+        padding: unset;
+    }
+
+    a{
+        color: var(--c-white);
+    }
+</style>
+
 <footer>
+    <div class="nav">
+        <h2>Navigation</h2>
+        <Navigation type="footer" />
+    </div>
+    <div class="socials">
+        <h2>Connect With Us</h2>
+        <ul>
+            <li><a href="facebook.com">Facebook</a></li>
+            <li><a href="x.com">Twitter</a></li>
+            <li><a href="instagram.com">Instagram</a></li>
+            <li><a href="inkedIn.com">LinkedIn</a></li>
+        </ul>
+    </div>
+    <div class="contact" id="contact">
+        <h2>Contact Information</h2>
+        <ul>
+            <li><strong>email:</strong> info@foldcon.com</li>
+            <li><strong>phone:</strong> +1-800-FOLDCON</li>
+            <li>
+                <strong>address:</strong> 123 Origami Street, Foldington, FA01
+                2OR
+            </li>
+        </ul>
+    </div>
 </footer>
