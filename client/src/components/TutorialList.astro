@@ -1,0 +1,78 @@
+---
+const { tutorials } = Astro.props;
+
+const uniqueTags = [
+    ...new Set(tutorials.map((tutorial) => tutorial.frontmatter.tags).flat()),
+];
+---
+
+<style>
+    div {
+        display: flex;
+        flex-direction: column;
+        gap: var(--s-3xl);
+    }
+    .tutorials {
+        display: flex;
+        flex-direction: column;
+        gap: var(--s-l);
+    }
+    .tutorial__item {
+        padding: var(--s-m);
+        border: var(--c-black) 0.1rem solid;
+    }
+    a {
+        display: grid;
+        grid-template-columns: 1fr max-content;
+    }
+    .tutorial__duration {
+        grid-column: 2;
+        grid-row: 1;
+    }
+    h2 {
+        font-size: var(--f-m);
+    }
+    .tutorial__tag {
+        display: flex;
+        justify-content: space-between;
+    }
+    .tags {
+        display: flex;
+        justify-content: space-between;
+    }
+    .tag {
+        padding: var(--s-s);
+        border: var(--c-black) solid 0.1rem;
+    }
+</style>
+
+<div>
+    <ul class="tutorials">
+        {
+            tutorials.map((tutorial) => (
+                <li class="tutorial__item">
+                    <a href={tutorial.url}>
+                        <h2>{tutorial.frontmatter.title}</h2>
+                        <p>{tutorial.frontmatter.description}</p>
+                        <p class="tutorial__duration">
+                            {tutorial.frontmatter.duration}
+                        </p>
+                    </a>
+                </li>
+            ))
+        }
+    </ul>
+    <ul class="tags">
+        {
+            uniqueTags.map((tag) => (
+                <>
+                    <li class="tag">
+                        <a href={`${import.meta.env.BASE_URL}/tags/${tag}`}>
+                            {tag}
+                        </a>
+                    </li>
+                </>
+            ))
+        }
+    </ul>
+</div>

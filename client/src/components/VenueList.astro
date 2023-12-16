@@ -61,16 +61,13 @@ const { venues } = Astro.props;
         venue.classList.add(`venue--active`);
     };
 
-    const init = () => {
+    document.addEventListener("astro:page-load", () => {
         cards[0].classList.remove(`hide`);
-        // console.log(venues);
-        // venues[0].classList.add(`venue--active`);
+        console.log(venues);
+        venues[0].classList.add(`venue--active`);
 
-        const venues = document.querySelectorAll(`.venue`);
         venues.forEach((venue) => {
             venue.addEventListener(`click`, clickVenueHandle);
         });
-    };
-
-    init();
+    });
 </script>

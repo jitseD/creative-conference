@@ -12,6 +12,21 @@ const { talks } = Astro.props;
 ---
 
 <style>
+    .day{
+        margin-block-end: var(--s-3xl);
+    }
+    .date {
+        display: flex;
+        gap: var(--s-m);
+        align-items: center;
+    }
+    .date * {
+        font-family: "Chakra Petch", sans-serif;
+        font-size: var(--f-xl);
+        font-weight: 500;
+        line-height: 1.2;
+        padding-block-end: var(--s-m);
+    }
     .day__wrapper {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
@@ -32,8 +47,12 @@ const { talks } = Astro.props;
 
 {
     days.map((day) => (
-        <>
-            <h2 class="day__title">{day.attributes.name}</h2>
+        <div class="day">
+            <div class="date">
+                <h2 class="day__title">{day.attributes.name}</h2>
+                <p>-</p>
+                <p class="day__date">{day.attributes.date}</p>
+            </div>
             <ul class="day__wrapper">
                 {talks.map((talk) => {
                     if (
@@ -67,6 +86,6 @@ const { talks } = Astro.props;
                     }
                 })}
             </ul>
-        </>
+        </div>
     ))
 }
