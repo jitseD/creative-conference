@@ -96,7 +96,6 @@ h1 {
     font-weight: 500;
     line-height: 1.2;
     padding-block: var(--s-3xl) var(--s-l);
-    padding-inline-start: var(--s-3xl);
 }
 
 h2 {
@@ -109,14 +108,11 @@ h2 {
 h3 {
     font-size: var(--f-l);
     font-weight: 300;
+    margin-block: var(--s-xs);
 }
 
 section {
     padding: var(--s-xl) var(--s-3xl);
-}
-
-p {
-    max-inline-size: 30rem;
 }
 
 .button {

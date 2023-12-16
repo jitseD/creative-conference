@@ -1,0 +1,40 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import TutorialList from "../../components/TutorialList.astro";
+
+export async function getStaticPaths() {
+    const tutorials = await Astro.glob("../../pages/tutorials/*.md");
+
+    const uniqueTags = [
+        ...new Set(
+            tutorials.map((tutorial) => tutorial.frontmatter.tags).flat(),
+        ),
+    ];
+
+    return uniqueTags.map((tag) => {
+        const filteredTutorials = tutorials.filter((tutorial) =>
+            tutorial.frontmatter.tags.includes(tag),
+        );
+        return {
+            params: { tag },
+            props: { tutorials: filteredTutorials },
+        };
+    });
+}
+
+const { tag } = Astro.params;
+const { tutorials } = Astro.props;
+---
+
+<style>
+    section {
+        margin-inline: var(--s-3xl);
+    }
+</style>
+
+<BaseLayout pageTitle={tag}>
+    <section>
+        <h1>{tag} tutorials</h1>
+        <TutorialList tutorials={tutorials} />
+    </section>
+</BaseLayout>

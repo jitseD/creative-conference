@@ -1,15 +1,19 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-const allTutorials = await Astro.glob("../../pages/tutorials/*.md");
+import TutorialList from "../../components/TutorialList.astro";
+const tutorials = await Astro.glob("../../pages/tutorials/*.md");
 const pageTitle = "Tutorials";
 ---
 
+<style>
+    section {
+        margin-inline: var(--s-3xl);
+    }
+</style>
+
 <BaseLayout pageTitle={pageTitle}>
-    <ul>
-        {
-            allTutorials.map((tutorial) => (
-                <li>{tutorial.frontmatter.title}</li>
-            ))
-        }
-    </ul>
+    <section>
+        <h1>Tutorials</h1>
+        <TutorialList tutorials={tutorials} />
+    </section>
 </BaseLayout>

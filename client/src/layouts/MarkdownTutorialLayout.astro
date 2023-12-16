@@ -1,0 +1,62 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+const { frontmatter } = Astro.props;
+---
+
+<BaseLayout>
+    <section class="tutorial__wrapper">
+        <div class="tutorial__info">
+            <h1 class="tutorial__title">{frontmatter.description}</h1>
+            <p class="tutorial__description">{frontmatter.description}</p>
+            <div class="tutorial__tags">
+                {
+                    frontmatter.tags.map((tag) => (
+                        <p class="tag">
+                            <a href={`/tags/${tag}`}>{tag}</a>
+                        </p>
+                    ))
+                }
+            </div>
+            <p class="tutorial__duration">
+                duration: {frontmatter.duration}
+            </p>
+        </div>
+        <div class="tutorial">
+            <slot />
+        </div>
+    </section>
+</BaseLayout>
+<style>
+    .tutorial__wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-block: var(--s-xl);
+    }
+    .tutorial__info {
+        border: var(--c-black) 0.1rem solid;
+        padding: var(--s-3xl);
+    }
+    .tutorial__title {
+        padding-block-start: unset;
+    }
+    .tutorial__tags {
+        display: flex;
+        gap: var(--s-s);
+        padding-block: var(--s-m);
+    }
+    .tag{
+        padding: var(--s-2xs) var(--s-xs);
+        border: var(--c-black) 0.1rem solid;
+    }
+    .tutorial {
+        inline-size: 100%;
+        margin-inline: var(--s-3xl);
+    }
+    h2 {
+        padding-block: var(--s-s);
+    }
+    h3 {
+        margin-block: var(--s-xs);
+    }
+</style>

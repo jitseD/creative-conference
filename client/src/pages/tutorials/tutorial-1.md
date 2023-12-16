@@ -1,8 +1,8 @@
 ---
-layout: ../../layouts/MarkdownPostLayout.astro
+layout: ../../layouts/MarkdownTutorialLayout.astro
 title: 'Origami Flower Tutorial'
 description: 'Learn how to create a beautiful origami flower in a few simple steps.'
-duration: 
+duration: "25 min"
 tags: ["origami", "tutorial", "paper crafts", "flowers"]
 
 ---
