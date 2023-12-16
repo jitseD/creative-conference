@@ -1,10 +1,11 @@
 ---
-import { Image, imageConfig } from "astro:assets";
+import { Image } from "astro:assets";
 
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SpeakerList from "../components/SpeakerList.astro";
 import VenueList from "../components/VenueList.astro";
 import TicketCard from "../components/TicketCard.astro";
+
 
 import BoatImg from "../assets/img/boat.jpg";
 import AnimalImg from "../assets/img/animals.jpeg";
@@ -14,7 +15,7 @@ import fetchApi from "../lib/strapi";
 const speakers = await fetchApi({
 	endpoint: "speakers",
 	wrappedByKey: "data",
-	query: { populate: "*" },
+	query: { populate: ["image", "talk"] },
 });
 const venues = await fetchApi({
 	endpoint: "venues",
@@ -30,6 +31,9 @@ const pageTitle = "Home";
 ---
 
 <style>
+	p{
+		max-inline-size: 30rem;
+	}
 	.index__title {
 		display: none;
 	}

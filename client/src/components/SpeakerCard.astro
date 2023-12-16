@@ -1,7 +1,6 @@
 ---
 import { Image } from "astro:assets";
 const { speaker } = Astro.props;
-const imageUrl = `${import.meta.env.STRAPI_URL}${speaker.attributes.image.url}`;
 ---
 
 <style>
@@ -39,7 +38,9 @@ const imageUrl = `${import.meta.env.STRAPI_URL}${speaker.attributes.image.url}`;
 </style>
 
 <li class="speaker__container">
-    <!-- <a class="speaker__container" href=""> -->
+    <a class="speaker__container" href={`${import.meta.env.BASE_URL}/talks/${
+                    speaker.attributes.talk.data.attributes.slug
+                }`}>
 
     <h3 class="speaker__name">
         {
@@ -67,5 +68,5 @@ const imageUrl = `${import.meta.env.STRAPI_URL}${speaker.attributes.image.url}`;
         }
         <div class="img__overlay"></div>
     </div>
-    <!-- </a> -->
+    </a>
 </li>
