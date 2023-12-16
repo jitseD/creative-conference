@@ -1,29 +1,34 @@
 ---
 layout: ../../layouts/MarkdownTutorialLayout.astro
-title: 'Origami Flower Tutorial'
-description: 'Learn how to create a beautiful origami flower in a few simple steps.'
-duration: "25 min"
-tags: ["origami", "tutorial", "paper crafts", "flowers"]
-
+title: 'Crane Tutorial'
+description: 'Learn how to make an elegant origami crane in a few simple steps.'
+duration: 30 min
+tags: ["origami", "tutorial", "birds"]
 ---
 
-# Origami Flower Tutorial
+# Origami Crane Tutorial
 
-In this tutorial, we'll create a lovely origami flower using simple folding techniques.
+In this tutorial, we'll guide you through the process of folding a traditional origami crane.
+
+## Introduction
+
+Origami, the Japanese art of paper folding, is not only a delightful pastime but also a fascinating way to create beautiful paper sculptures. The origami crane is a timeless symbol of peace, longevity, and good fortune. Follow these steps to fold your own crane and experience the joy of creating a piece of art from a simple piece of paper.
 
 ## Materials Needed
+
+To begin, gather the following materials:
+
 - One square sheet of origami paper (15 x 15 cm)
-- Scissors (optional)
-- Glue (optional)
+- Patience and a steady hand
 
 ## Instructions
 
-### Step 1: Fold Diagonally
-1. Start with the colored side facing down.
+### Step 1: Starting Position
+1. Begin with the colored side facing down.
 2. Fold the paper diagonally to form a triangle.
 3. Crease and unfold.
 
-### Step 2: Fold Diagonally in the Other Direction
+### Step 2: Fold Diagonally in the Opposite Direction
 1. Fold the paper diagonally in the opposite direction.
 2. Crease and unfold.
 
@@ -32,7 +37,7 @@ In this tutorial, we'll create a lovely origami flower using simple folding tech
 2. Repeat the same for the left corner.
 3. Crease and unfold.
 
-### Step 4: Fold Top Layer Down
+### Step 4: Fold the Top Layer Down
 1. Fold the top layer of the paper down.
 2. Crease and unfold.
 
@@ -43,12 +48,12 @@ In this tutorial, we'll create a lovely origami flower using simple folding tech
 ### Step 6: Tuck the Top Flap Inside
 1. Fold the top flap down and tuck it inside the pocket.
 
-### Step 7: Shape the Flower
-1. Gently pull the layers apart to create petals.
-2. Adjust and shape the flower as desired.
+### Step 7: Shape the Crane
+1. Gently pull the layers apart to create the body and wings.
+2. Adjust the wings and tail as desired.
 
-### Optional: Enhancements
-- Use scissors to trim the edges for a more rounded look.
-- Apply a small amount of glue to secure the folds if needed.
+### Conclusion
 
-Congratulations! You've created a beautiful origami flower. 🌸
+Congratulations! You've successfully crafted an elegant origami crane. Place it on your desk, hang it as a decoration, or give it as a gift. Experiment with different paper sizes and patterns to create your unique flock of cranes.
+
+Remember, patience and practice are key to mastering the art of origami. Enjoy the process and continue exploring the world of paper folding!

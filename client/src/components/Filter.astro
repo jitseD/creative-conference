@@ -27,7 +27,7 @@ const { categories } = Astro.props;
     }
   };
 
-  document.addEventListener("astro:page-load", () => {
+  document.addEventListener("DOMContentLoaded", () => {
     const options = document.querySelectorAll(".filteroption");
     options.forEach((option) =>
       option.addEventListener("change", handleOptionChange),

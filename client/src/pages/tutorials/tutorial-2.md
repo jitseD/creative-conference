@@ -1,52 +1,55 @@
 ---
 layout: ../../layouts/MarkdownTutorialLayout.astro
-title: 'Origami Crane Tutorial'
-description: 'Learn how to fold a traditional origami crane step by step.'
-duration: "10 min" 
-tags: ["origami", "tutorial", "paper crafts", "birds"]
-
+title: 'Butterfly Tutorial'
+description: 'Learn how to fold a beautiful origami butterfly with simple steps.'
+duration: 20 min
+tags: ["origami", "tutorial", "insects"]
 ---
 
-# Origami Crane Tutorial
+# Origami Butterfly Tutorial
 
-In this tutorial, we'll guide you through creating an elegant origami crane using basic folding techniques.
+In this tutorial, we'll walk you through the steps to create a stunning origami butterfly. The butterfly is a classic origami design that showcases elegance and beauty.
+
+## Introduction
+
+Origami, the Japanese art of paper folding, offers an array of possibilities to transform a plain piece of paper into intricate designs. Follow these instructions to fold your own origami butterfly and admire its delicate details.
 
 ## Materials Needed
+
+To get started, gather the following materials:
+
 - One square sheet of origami paper (15 x 15 cm)
-- A quiet and focused mindset
+- Creativity and a calm workspace
 
 ## Instructions
 
-### Step 1: Begin with Colored Side Down
-1. Start with the colored side of the paper facing down.
-2. Fold the paper diagonally to create a triangle.
+### Step 1: Folding in Half
+1. Begin with the colored side facing down.
+2. Fold the paper in half diagonally to create a triangle.
 3. Crease and unfold.
 
-### Step 2: Fold Diagonally in the Other Direction
-1. Fold the paper diagonally in the opposite direction.
-2. Crease and unfold.
+### Step 2: Fold the Corners
+1. Fold the right and left corners towards the top corner.
+2. Crease well and unfold.
 
-### Step 3: Fold Corners to the Center
-1. Fold the right and left corners towards the center crease.
-2. Crease and unfold.
+### Step 3: Creating a Diamond Shape
+1. Bring the top point downwards, aligning it with the bottom point.
+2. Crease well and unfold.
 
-### Step 4: Fold Top Corners to the Center
-1. Fold the top layer's right and left corners towards the center.
-2. Crease and unfold.
+### Step 4: Collapse and Fold
+1. Using the creases made, collapse the paper inwards along the creases.
+2. The result should be a diamond shape.
 
-### Step 5: Fold Top Layer Down
-1. Fold the top layer of the paper down.
-2. Crease and unfold.
+### Step 5: Shaping the Butterfly
+1. Fold the top edges of the diamond towards the center crease.
+2. Flip the paper and repeat the same for the other side.
 
-### Step 6: Fold Corners to the Top
-1. Fold the right and left corners towards the top.
-2. Crease and unfold.
+### Step 6: Creating the Wings
+1. Fold the top flap downwards to form the butterfly's wings.
+2. Adjust and shape the wings as desired.
 
-### Step 7: Tuck the Top Flap Inside
-1. Fold the top flap down and tuck it inside the pocket.
+### Conclusion
 
-### Step 8: Shape the Crane
-1. Gently pull the layers apart to create the wings and neck.
-2. Adjust and shape the crane for a better appearance.
+Congratulations! You've created a charming origami butterfly. Experiment with different paper colors and sizes to craft a vibrant array of butterflies. Display them as decorations, gift them to friends, or use them in various craft projects.
 
-Congratulations! You've mastered folding a traditional origami crane. 🕊️
+Origami allows for endless creativity and is a wonderful way to relax and explore the world of paper art. Enjoy the process and embrace the beauty of your folded creation!
