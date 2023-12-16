@@ -38,14 +38,22 @@ const { talk, prev, next } = Astro.props;
 <BaseLayout pageTitle={talk.attributes.title}>
     <DetailTalkCard talk={talk} />
     <section>
-
         <div class="category">
-            <a class="button"
-            href={`${import.meta.env.BASE_URL}/category/${
-                talk.attributes.category.data.attributes.category
-            }`}>more {talk.attributes.category.data.attributes.category}s</a
-        >
-    </div>
-</section>
+            <a
+                class="button"
+                href={`${import.meta.env.BASE_URL}/category/${
+                    talk.attributes.category.data.attributes.slug
+                }`}>more {talk.attributes.category.data.attributes.category}s</a
+            >
+        </div>
+        <div class="location">
+            <a
+                class="button"
+                href={`${import.meta.env.BASE_URL}/venue/${
+                    talk.attributes.room.data.attributes.venue.data.attributes.slug
+                }`}>more at the {talk.attributes.room.data.attributes.venue.data.attributes.name}</a
+            >
+        </div>
+    </section>
     <PrevNext prev={prev} next={next} path="talks" />
 </BaseLayout>

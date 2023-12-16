@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Filter from "../components/Filter.astro";
 import TalksList from "../components/TalksList.astro";
 
 import fetchApi from "../lib/strapi";
@@ -9,10 +10,16 @@ const talks = await fetchApi({
     query: { populate: ["speaker", "room", "room.venue", "day", "category"] },
 });
 
+const categories = await fetchApi({
+    endpoint: "talks",
+    wrappedByKey: "data",
+    query: { populate: "talks" },
+});
+
 const pageTitle = "Schedule";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
     <h1>Schedule</h1>
-    <TalksList talks={talks}/>
+    <TalksList talks={talks} />
 </BaseLayout>
