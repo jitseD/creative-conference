@@ -20,7 +20,7 @@ const speakers = await fetchApi({
 const venues = await fetchApi({
 	endpoint: "venues",
 	wrappedByKey: "data",
-	query: { populate: "image" },
+	query: { populate: ["image", "rooms", "rooms.talk"] },
 });
 const tickets = await fetchApi({
 	endpoint: "tickets",
