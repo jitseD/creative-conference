@@ -97,13 +97,10 @@ const { talk } = Astro.props;
 </article>
 
 <script>
-    document.addEventListener("astro:page-load", () => {
-        
-        const $starts = document.querySelectorAll(`.talk__time`);
-        $starts.forEach(($start) => {
-            const start = $start.textContent;
-            const [hours, minutes] = start.split(":").slice(0, 2);
-            $start.textContent = `${hours}:${minutes}`;
+        const $times = document.querySelectorAll(`.talk__time`);
+        $times.forEach(($time) => {
+            const time = $time.textContent;
+            const [hours, minutes] = time.split(":").slice(0, 2);
+            $time.textContent = `${hours}:${minutes}`;
         });
-    });
 </script>
