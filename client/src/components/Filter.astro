@@ -1,0 +1,88 @@
+---
+const { categories } = Astro.props;
+---
+
+<script>
+  const handleOptionChange = () => {
+    const selection = [
+      ...document.querySelectorAll(".filteroption:checked"),
+    ].map(($input) => $input.value);
+
+    console.log(selection);
+
+    if (selection.length > 0) {
+      document
+        .querySelectorAll("[data-category]")
+        .forEach(($li) => $li.classList.add("hide"));
+
+      selection.forEach((category) => {
+        document
+          .querySelectorAll(`[data-category="${category}"]`)
+          .forEach(($li) => $li.classList.remove("hide"));
+      });
+    } else {
+      document
+        .querySelectorAll("[data-category]")
+        .forEach(($li) => $li.classList.remove("hide"));
+    }
+  };
+
+  document.addEventListener("astro:page-load", () => {
+    const options = document.querySelectorAll(".filteroption");
+    options.forEach((option) =>
+      option.addEventListener("change", handleOptionChange),
+    );
+  });
+</script>
+
+<ul>
+  {
+    categories.map((category) => (
+      <li>
+        <label>
+          <span>{category.attributes.category}</span>
+          <input
+            class="filteroption"
+            type="checkbox"
+            value={category.attributes.slug}
+            name="filter"
+          />
+        </label>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  ul {
+    display: flex;
+    gap: var(--s-m);
+    justify-content: center;
+    inline-size: max-content;
+    padding-block-end: var(--s-l);
+  }
+
+  input {
+    display: none;
+  }
+
+  li {
+    border: var(--c-black) solid 0.1rem;
+    display: grid;
+    place-items: center;
+    inline-size: max-content;
+    block-size: max-content;
+  }
+  label {
+    padding: var(--s-2xs) var(--s-xs);
+  }
+
+  label:hover {
+    cursor: pointer;
+  }
+
+  li:has(input:checked) {
+    background-color: var(--c-blue-d);
+    color: var(--c-white);
+  }
+</style>

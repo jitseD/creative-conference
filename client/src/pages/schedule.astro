@@ -11,15 +11,32 @@ const talks = await fetchApi({
 });
 
 const categories = await fetchApi({
-    endpoint: "talks",
+    endpoint: "categories",
     wrappedByKey: "data",
-    query: { populate: "talks" },
 });
 
 const pageTitle = "Schedule";
 ---
 
+<style>
+    .schedule {
+        display: grid;
+        grid-template-columns: min-content 1fr;
+        place-items: flex-end;
+        margin-block-end: var(--s-m);
+    }
+    .schedule__title {
+        padding-inline-start: unset;
+        justify-self: flex-start;
+    }
+</style>
+
 <BaseLayout pageTitle={pageTitle}>
-    <h1>Schedule</h1>
-    <TalksList talks={talks} />
+    <section>
+        <div class="schedule">
+            <h1 class="schedule__title">Schedule</h1>
+            <Filter categories={categories} />
+        </div>
+        <TalksList talks={talks} />
+    </section>
 </BaseLayout>

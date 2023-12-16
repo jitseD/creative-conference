@@ -32,7 +32,15 @@ export async function getStaticPaths() {
 const { category } = Astro.props;
 ---
 
+<style>
+    h1 {
+        padding-inline-start: unset;
+    }
+</style>
+
 <BaseLayout pageTitle={category.attributes.category}>
-    <h1>{category.attributes.category}s in Schedule</h1>
-    <TalksList talks={category.attributes.talks.data} />
+    <section>
+        <h1>{category.attributes.category}s in Schedule</h1>
+        <TalksList talks={category.attributes.talks.data} />
+    </section>
 </BaseLayout>

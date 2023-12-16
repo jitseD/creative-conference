@@ -20,12 +20,19 @@ export async function getStaticPaths() {
         },
     });
 
-    const paths = talks.map((talk, i) => ({
+    const filteredTalks = talks.filter((talk) => {
+        const category = talk.attributes.category?.data?.attributes.category;
+        return ["talk", "workshop", "exhibition"].includes(category);
+    });
+
+    console.log(filteredTalks);
+
+    const paths = filteredTalks.map((talk, i) => ({
         params: { id: talk.attributes.slug.toString() },
         props: {
             talk,
-            next: i < talks.length - 1 ? talks[i + 1] : null,
-            prev: i > 0 ? talks[i - 1] : null,
+            next: i < filteredTalks.length - 1 ? filteredTalks[i + 1] : null,
+            prev: i > 0 ? filteredTalks[i - 1] : null,
         },
     }));
 
@@ -35,9 +42,18 @@ export async function getStaticPaths() {
 const { talk, prev, next } = Astro.props;
 ---
 
+<style>
+    .more {
+        display: flex;
+        gap: var(--s-m);
+        max-inline-size: max-content;
+        margin: -3rem auto;
+    }
+</style>
+
 <BaseLayout pageTitle={talk.attributes.title}>
     <DetailTalkCard talk={talk} />
-    <section>
+    <section class="more">
         <div class="category">
             <a
                 class="button"
@@ -50,8 +66,13 @@ const { talk, prev, next } = Astro.props;
             <a
                 class="button"
                 href={`${import.meta.env.BASE_URL}/venue/${
-                    talk.attributes.room.data.attributes.venue.data.attributes.slug
-                }`}>more at the {talk.attributes.room.data.attributes.venue.data.attributes.name}</a
+                    talk.attributes.room.data.attributes.venue.data.attributes
+                        .slug
+                }`}
+                >more at the {
+                    talk.attributes.room.data.attributes.venue.data.attributes
+                        .name
+                }</a
             >
         </div>
     </section>

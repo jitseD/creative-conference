@@ -34,11 +34,19 @@ const { venue } = Astro.props;
 
 let venueTalks = [];
 venue.attributes.rooms.data.forEach((room) => {
-    venueTalks = venueTalks.concat(room.attributes.talk.data); 
+    venueTalks = venueTalks.concat(room.attributes.talk.data);
 });
 ---
 
+<style>
+    h1 {
+        padding-inline-start: unset;
+    }
+</style>
+
 <BaseLayout pageTitle={venue.attributes.name}>
-    <h1>{venue.attributes.name}s in Schedule</h1>
-    <TalksList talks={venueTalks} />
+    <section>
+        <h1>{venue.attributes.name}s in Schedule</h1>
+        <TalksList talks={venueTalks} />
+    </section>
 </BaseLayout>
