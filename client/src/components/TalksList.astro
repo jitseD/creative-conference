@@ -1,5 +1,5 @@
 ---
-import TalkCard from "../components/TalkCard.astro";
+import TalkCard from "./TalkCard.astro";
 
 import fetchApi from "../lib/strapi";
 
@@ -8,7 +8,7 @@ const days = await fetchApi({
     wrappedByKey: "data",
 });
 
-const {talks} = Astro.props;
+const { talks } = Astro.props;
 ---
 
 <style>
@@ -30,6 +30,7 @@ const {talks} = Astro.props;
     }
 </style>
 
+
 {
     days.map((day) => (
         <section>
@@ -37,19 +38,19 @@ const {talks} = Astro.props;
             <ul class="day__wrapper">
                 {talks.map((talk) => {
                     if (
-                        talk.attributes.day.data.attributes.name ===
+                        talk.attributes.day?.data?.attributes.name ===
                         day.attributes.name
                     ) {
                         return (
                             <li
                                 class="talk__wrapper"
                                 data-category={
-                                    talk.attributes.category?.data.attributes
+                                    talk.attributes.category?.data?.attributes
                                         .slug
                                 }
                             >
                                 {["talk", "workshop", "exhibition"].includes(
-                                    talk.attributes.category?.data.attributes
+                                    talk.attributes.category?.data?.attributes
                                         .slug,
                                 ) ? (
                                     <a

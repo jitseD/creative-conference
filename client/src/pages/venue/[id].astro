@@ -1,0 +1,44 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import TalksList from "../../components/TalksList.astro";
+import fetchApi from "../../lib/strapi";
+
+export async function getStaticPaths() {
+    const venues = await fetchApi({
+        endpoint: "venues",
+        wrappedByKey: "data",
+        query: {
+            populate: [
+                "rooms",
+                "rooms.talk",
+                "rooms.talk.speaker",
+                "rooms.talk.room",
+                "rooms.talk.room.venue",
+                "rooms.talk.day",
+                "rooms.talk.category",
+            ],
+        },
+    });
+
+    const paths = venues.map((venue, i) => ({
+        params: { id: venue.attributes.slug.toString() },
+        props: {
+            venue,
+        },
+    }));
+
+    return paths;
+}
+
+const { venue } = Astro.props;
+
+let venueTalks = [];
+venue.attributes.rooms.data.forEach((room) => {
+    venueTalks = venueTalks.concat(room.attributes.talk.data); 
+});
+---
+
+<BaseLayout pageTitle={venue.attributes.name}>
+    <h1>{venue.attributes.name}s in Schedule</h1>
+    <TalksList talks={venueTalks} />
+</BaseLayout>

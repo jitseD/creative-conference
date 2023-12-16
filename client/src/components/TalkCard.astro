@@ -1,5 +1,5 @@
 ---
-const { talk, showCategory = true } = Astro.props;
+const { talk } = Astro.props;
 ---
 
 <style>
@@ -66,7 +66,7 @@ const { talk, showCategory = true } = Astro.props;
 </style>
 
 <article
-    class={`talk__wrapper ${talk.attributes.category?.data.attributes.slug}`}
+    class={`talk__wrapper ${talk.attributes.category?.data?.attributes.slug}`}
 >
     <p class="talk__time">{talk.attributes.start}</p>
     <h3 class="talk__name">{talk.attributes.title}</h3>

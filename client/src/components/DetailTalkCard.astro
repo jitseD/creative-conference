@@ -1,6 +1,6 @@
 ---
 import { Image, imageConfig } from "astro:assets";
-const { talk, showCategory = true } = Astro.props;
+const { talk } = Astro.props;
 ---
 
 <style>
@@ -56,7 +56,7 @@ const { talk, showCategory = true } = Astro.props;
 </style>
 
 <section
-    class={`talk__wrapper ${talk.attributes.category?.data.attributes.slug}`}
+    class={`talk__wrapper ${talk.attributes.category?.data?.attributes.slug}`}
 >
     <p class="talk__time">{talk.attributes.start}</p>
     <h2 class="talk__name">{talk.attributes.title}</h2>
