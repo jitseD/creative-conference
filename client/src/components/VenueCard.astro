@@ -44,12 +44,14 @@ const { venue } = Astro.props;
         alt="venue picture"
         width="750"
         height="500"
-        widths={[250, 350, 500, 750]}
-        sizes="(max-width: 35em) 70vw, (max-width: 50em) 60vw, 30vw"
+        widths={[240, 360, 720]}
+        sizes={`(max-width: 720px) 240px,max-width: 1080px) 360px, (max-width: 1600px) 720px`}
     />
     <p class="venue__description">{venue.attributes.description}</p>
 
-    <a class="button" href={`${import.meta.env.BASE_URL}/venue/${venue.attributes.slug}`}
+    <a
+        class="button"
+        href={`${import.meta.env.BASE_URL}/venue/${venue.attributes.slug}`}
         >view talks at this location</a
     >
 </div>
